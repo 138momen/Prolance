@@ -55,6 +55,19 @@ app.use(
 // Explicitly handle OPTIONS preflight requests for all routes
 app.options("*", cors());
 app.use(express.json({ limit: "100kb" }));
+// Force the server to await the database connection before proceeding
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    return res.status(500).json({ 
+      success: false, 
+      message: "Database connection failed",
+      error: error.message 
+    });
+  }
+});
 
 const healthCheck = (req, res) => {
   const databaseReady = mongoose.connection.readyState === 1;
