@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://127.0.0.1:5000',
+  apiUrl: 'https://test-eight-opal-39.vercel.app/',
 };
