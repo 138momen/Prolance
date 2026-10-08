@@ -1,0 +1,36 @@
+{
+  "name": "prolance-backend",
+  "version": "1.0.0",
+  "description": "Simple freelance platform backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node seed.js",
+    "reset-db": "node reset-db.js"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "freelance",
+    "mongoose"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.4",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "overrides": {
+    "qs": "6.16.0"
+  }
+}
