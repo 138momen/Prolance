@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const connectDB = require("./src/config/db");
 const app = require("./src/app");
 
 const requiredEnvironment = ["MONGODB_URI", "JWT_SECRET"];
@@ -14,10 +13,6 @@ if (missingEnvironment.length > 0) {
   );
 }
 
-// 1. Initiate the database connection
-connectDB().catch((error) => {
-  console.error("Failed to connect to database:", error.message);
-});
 
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 5000;
