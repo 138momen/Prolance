@@ -3,9 +3,18 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
-const UPLOAD_DIR = path.join(__dirname, "..", "..", "uploads");
+// 1. Check if we are running on Vercel/Production
+const isVercel = process.env.NODE_ENV === "production" || process.env.VERCEL;
 
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+// 2. Use Vercel's writable /tmp folder in production, and normal uploads folder locally
+const UPLOAD_DIR = isVercel 
+  ? path.join("/tmp", "uploads") 
+  : path.join(__dirname, "..", "..", "uploads");
+
+// 3. Create the directory safely
+if (!fs.existsSync(UPLOAD_DIR)) {
+  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOAD_DIR),
