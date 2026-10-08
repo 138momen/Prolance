@@ -19,5 +19,10 @@ connectDB().catch((error) => {
   console.error("Failed to connect to database:", error.message);
 });
 
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
 // 2. Export the app instead of using app.listen()
-module.exports = server;
+module.exports = app;
