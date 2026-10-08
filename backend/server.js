@@ -20,4 +20,4 @@ connectDB().catch((error) => {
 });
 
 // 2. Export the app instead of using app.listen()
-module.exports = app;
+module.exports = server;
