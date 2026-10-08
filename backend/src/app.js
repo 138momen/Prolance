@@ -23,11 +23,36 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const corsOptions = process.env.CORS_ORIGINS
-  ? { origin: process.env.CORS_ORIGINS.split(",").map((origin) => origin.trim()) }
-  : undefined;
+const rawOrigins = process.env.CORS_ORIGINS || "";
+const allowedOrigins = rawOrigins
+  .split(",")
+  .map((origin) => origin.trim().replace(/\/$/, "")); // Strip trailing slashes
 
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps, postman, or server-to-server)
+      if (!origin) return callback(null, true);
+      
+      const cleanOrigin = origin.replace(/\/$/, "");
+      
+      // Allow if it matches your env variable OR if it's a Vercel preview branch
+      if (
+        allowedOrigins.length === 0 || 
+        allowedOrigins.includes(cleanOrigin) || 
+        cleanOrigin.endsWith(".vercel.app")
+      ) {
+        return callback(null, true);
+      }
+      
+      return callback(new Error("CORS policy violation"), false);
+    },
+    credentials: true, // Required if your frontend sends cookies or tokens
+  })
+);
+
+// Explicitly handle OPTIONS preflight requests for all routes
+app.options("*", cors());
 app.use(express.json({ limit: "100kb" }));
 
 const healthCheck = (req, res) => {
