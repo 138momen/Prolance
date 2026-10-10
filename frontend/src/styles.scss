@@ -793,8 +793,8 @@ tabler-icon {
 
 .pl-brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
+  align-items: center; /* Changed from baseline to center so the icon and text line up */
+  gap: 0.6rem;         /* Space between the icon and text */
   font-family: var(--pl-font-display);
   font-size: 1.6rem;
   line-height: 1;
@@ -802,6 +802,14 @@ tabler-icon {
   transition:
     color 150ms cubic-bezier(0.16, 0.84, 0.34, 1),
     transform 150ms cubic-bezier(0.16, 0.84, 0.34, 1);
+}
+
+/* ADD THIS RIGHT BELOW IT */
+.pl-brand__icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 .pl-brand:hover {
