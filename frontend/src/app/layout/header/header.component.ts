@@ -27,6 +27,7 @@ import { Notification, User } from '../../core/models/models';
       <div class="pl-container">
         <div class="pl-header__inner">
           <a routerLink="/" class="pl-brand" aria-label="ProLance home">
+            <img src="prolance.icon" alt="ProLance Logo" class="pl-brand__icon">
             ProLance<span class="pl-brand__dot">.</span>
           </a>
 
