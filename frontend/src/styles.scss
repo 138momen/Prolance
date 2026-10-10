@@ -37,10 +37,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; 
 }
 
 body {
   margin: 0;
+  overflow-x: hidden; 
+  position: relative; 
   background-color: var(--pl-ivory);
   color: var(--pl-ink);
   font-family: var(--pl-font-interface);
