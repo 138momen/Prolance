@@ -786,8 +786,8 @@ tabler-icon {
 .pl-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  /* justify-content: space-between; <-- DELETE THIS LINE */
+  gap: 2.5rem; /* Increased from 1.5rem for better spacing */
   padding-block: 0.9rem;
 }
 
@@ -841,6 +841,7 @@ tabler-icon {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-left: auto; /* <-- ADD THIS LINE */
 }
 
 .pl-header__user {
