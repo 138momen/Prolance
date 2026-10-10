@@ -26,11 +26,9 @@ import { Notification, User } from '../../core/models/models';
     <header class="pl-header">
       <div class="pl-container">
         <div class="pl-header__inner">
-          <a routerLink="/" class="pl-brand" aria-label="ProLance home">
-            <img src="prolance.icon" alt="ProLance Logo" class="pl-brand__icon">
-            ProLance<span class="pl-brand__dot">.</span>
-          </a>
-
+         <a routerLink="/" class="pl-brand" aria-label="ProLance home">
+  ProLance<span class="pl-brand__dot">.</span>
+</a>
           <nav
             class="pl-nav"
             [class.is-open]="menuOpen()"
